@@ -8,9 +8,17 @@ const equal = operators.querySelector('button.equal');
 
 const clear = operators.querySelector('.clear');
 
-const deleteNumber = operators.querySelector('.delete');
+const deleteNumber = operators.querySelector('button.deleteNumber');
 
+const display = document.querySelector('.display');
 
+const displaySmall = document.createElement('div');
+
+const displayBig = document.createElement('div');
+
+display.appendChild(displaySmall);
+display.appendChild(displayBig);
+//calculator working
 let result;
 let currentNumber;
 let operator;
@@ -18,24 +26,26 @@ let equalOperator = false;
 
 numberBtns.forEach((btn) => {
   btn.addEventListener('click', (e) => {
-    if (equalOperator) {
-      // If equal was clicked, start a new calculation
-      currentNumber = undefined;
-      operator = undefined;
-      equalOperator = false;
-    }
+
 
     if (operator === undefined) {
       if (result === undefined) {
+        displayBig.textContent = 0;
+        displaySmall.textContent = 0;
         result = Number(e.target.textContent);
+        displayBig.textContent = result;
       } else {
         result = result * 10 + Number(e.target.textContent);
+        displayBig.textContent = result;
       }
     } else {
       if (currentNumber === undefined) {
+        displaySmall.textContent = result;
         currentNumber = Number(e.target.textContent);
+        displayBig.textContent = currentNumber;
       } else {
         currentNumber = currentNumber * 10 + Number(e.target.textContent);
+        displayBig.textContent = currentNumber;
       }
     }
     console.log(result, operator, currentNumber);
@@ -45,7 +55,15 @@ numberBtns.forEach((btn) => {
 operatorBtns.forEach((btn) => {
   btn.addEventListener('click', (e) => {
     operator = e.target.textContent;
-    currentNumber = undefined; // Reset currentNumber when an operator is clicked
+
+    displaySmall.textContent = result;
+    if (currentNumber == undefined) {
+
+      displayBig.textContent = 0;
+    } else {
+
+      displayBig.textContent = currentNumber;
+    }
     console.log(result, operator, currentNumber);
   });
 });
@@ -53,9 +71,13 @@ operatorBtns.forEach((btn) => {
 equal.addEventListener('click', () => {
   equalOperator = true;
   if (operator && currentNumber !== undefined) {
+    displaySmall.textContent = `${result} ${operator} ${currentNumber}`
     result = operate(result, currentNumber, operator);
+    displayBig.textContent = result;
     currentNumber = undefined;
     operator = undefined;
+    equalOperator = false;
+
   }
   console.log(result);
 });
@@ -63,10 +85,29 @@ equal.addEventListener('click', () => {
 
 clear.addEventListener('click', () => {
 
+  displaySmall.textContent = 0;
+  displayBig.textContent = 0;
+
   result = undefined;
   operator = undefined;
   currentNumber = undefined;
   equalOperator = false;
+})
+
+deleteNumber.addEventListener('click', () => {
+
+  if (operator == undefined) {
+    result = parseInt(result / 10);
+
+    displaySmall.textContent = 0;
+    displayBig.textContent = result;
+
+  } else {
+    currentNumber = parseInt(currentNumber / 10);
+    console.log('deleted');
+    console.log(currentNumber);
+  }
+
 })
 
 // Functions
@@ -106,3 +147,7 @@ function operate(result, currentNumber, operator) {
     return divide(result, currentNumber);
   }
 }
+
+
+//display
+
