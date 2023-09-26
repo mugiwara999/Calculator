@@ -16,8 +16,14 @@ const displaySmall = document.createElement('div');
 
 const displayBig = document.createElement('div');
 
+displayBig.classList.add('displayBig');
+
+displaySmall.classList.add('displaySmall');
+
 display.appendChild(displaySmall);
 display.appendChild(displayBig);
+displayBig.textContent = 0;
+displaySmall.textContent = 0;
 //calculator working
 let result;
 let currentNumber;
@@ -95,6 +101,7 @@ clear.addEventListener('click', () => {
 })
 
 deleteNumber.addEventListener('click', () => {
+
 
   if (operator == undefined) {
     result = parseInt(result / 10);

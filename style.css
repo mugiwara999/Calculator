@@ -1,0 +1,147 @@
+
+body {
+
+  background-color:#c3d1db;
+  display: flex ;
+  justify-content: center;
+}
+
+.container {
+
+  margin-top: 50px;
+  width: 390px;
+  display:flex;
+  flex-direction: column;
+
+  gap: 20px;
+  justify-content:center;
+}
+.buttons {
+  display: flex;
+
+  flex: 1;
+  justify-content: center;
+  
+    gap: 20px;
+  flex-basis: 20px;
+
+}
+
+.numbers button {
+
+    border-color: #141638;
+    transition-duration: 0.4s;
+
+  font-size: 25px;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 20%;
+}
+
+.numbers button:hover {
+
+    background-color: #141638;
+    color: white;
+  }
+
+.display {
+ color: #000;
+  font-size: 30px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items:flex-end;
+  transition-duration: 0.4s;
+}
+
+.display:hover {
+
+  background-color: #222633;
+  color: white;
+  border-radius: 20px;
+  border-color: white;
+
+}
+
+.operators {
+    display: flex;
+    gap: 20px;
+    flex-grow: 1; 
+    /* text-align: center; */
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+
+  }
+
+  .operators button {
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 20px;
+    width: 100%;  }
+
+
+  .operatorsRow {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+
+  .remove button{
+    width: 100%;
+    border-color: red;
+    transition-duration: 0.4s;
+  }
+
+  .remove button:hover {
+
+    background-color: red;
+    color: white;
+    border-color: black;
+  }
+
+
+.arthimetic {
+
+    transition-duration: 0.4s;
+    border-color: #e314e0;
+    color: black;
+}
+
+.arthimetic:hover {
+
+    background-color: #e314e0;
+    color:white;
+    border-color: black;
+}
+
+  .equal {
+
+  border-color:#e37b6f ;
+  color: black;
+  transition-duration: 0.4s;
+  width: 100%;
+}
+
+.equal:hover {
+
+  background-color: #e37b6f;
+
+  color: white;
+  border-color: black;
+}
+
+.gap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.numbers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
